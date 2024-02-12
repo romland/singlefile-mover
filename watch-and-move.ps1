@@ -21,6 +21,7 @@ try {
   # ... and register for the watcher's `Created` event with it.
   Register-ObjectEvent $watcher -EventName Created -SourceIdentifier $sourceId -Action {
     try {
+        Start-Sleep -Seconds 5
         $eventPath = $Event.SourceEventArgs.FullPath
         Move-Item -Path ($eventPath) -Destination ($destination) -Force -Verbose
     } catch {
